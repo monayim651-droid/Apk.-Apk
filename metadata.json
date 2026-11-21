@@ -1,0 +1,6 @@
+{
+  "name": "MONTANU SCORE",
+  "description": "Your World of Sports — Live Football & Cricket scores, stats, AI match & player analysis, and social sports community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

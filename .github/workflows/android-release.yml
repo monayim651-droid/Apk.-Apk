@@ -1,0 +1,80 @@
+name: Build & Sign Android Release (APK & AAB)
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  android-release:
+    name: Build Signed Release APK & AAB
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate release signing secrets
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ] || [ -z "$STORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "Missing required GitHub Secrets: ANDROID_KEYSTORE_BASE64, STORE_PASSWORD, and KEY_PASSWORD."
+            exit 1
+          fi
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "${{ runner.temp }}/my-upload-key.jks"
+
+      - name: Prepare optional API secrets (.env)
+        env:
+          FOOTBALL_API_KEY: ${{ secrets.FOOTBALL_API_KEY }}
+          CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
+        run: |
+          : > .env
+          if [ -n "$FOOTBALL_API_KEY" ]; then
+            echo "FOOTBALL_API_KEY=$FOOTBALL_API_KEY" >> .env
+          fi
+          if [ -n "$CRICKET_API_KEY" ]; then
+            echo "CRICKET_API_KEY=$CRICKET_API_KEY" >> .env
+          fi
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 9.3.1
+
+      - name: Run unit tests
+        run: gradle :app:testDebugUnitTest
+
+      - name: Build signed Release APK & App Bundle (AAB)
+        env:
+          KEYSTORE_PATH: ${{ runner.temp }}/my-upload-key.jks
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle :app:assembleRelease :app:bundleRelease
+
+      - name: Clean up temporary keystore
+        if: always()
+        run: rm -f "${{ runner.temp }}/my-upload-key.jks" .env
+
+      - name: Upload Release APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: montanu-score-release-apk
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+
+      - name: Upload Release AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: montanu-score-release-aab
+          path: app/build/outputs/bundle/release/*.aab
+          if-no-files-found: error

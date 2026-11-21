@@ -1,0 +1,461 @@
+package com.example.i18n
+
+data class AppLanguage(
+    val code: String,
+    val englishName: String,
+    val nativeName: String,
+    val isRtl: Boolean = false
+)
+
+val SUPPORTED_LANGUAGES = listOf(
+    AppLanguage("en", "English", "English"),
+    AppLanguage("bn", "Bangla", "বাংলা"),
+    AppLanguage("hi", "Hindi", "हिन्दी"),
+    AppLanguage("ur", "Urdu", "اردو", isRtl = true),
+    AppLanguage("ar", "Arabic", "العربية", isRtl = true),
+    AppLanguage("es", "Spanish", "Español"),
+    AppLanguage("fr", "French", "Français"),
+    AppLanguage("de", "German", "Deutsch"),
+    AppLanguage("pt", "Portuguese", "Português"),
+    AppLanguage("it", "Italian", "Italiano"),
+    AppLanguage("tr", "Turkish", "Türkçe"),
+    AppLanguage("id", "Indonesian", "Bahasa Indonesia"),
+    AppLanguage("ms", "Malay", "Bahasa Melayu"),
+    AppLanguage("ja", "Japanese", "日本語"),
+    AppLanguage("ko", "Korean", "한국어"),
+    AppLanguage("zh", "Chinese", "中文"),
+    AppLanguage("ru", "Russian", "Русский"),
+    AppLanguage("nl", "Dutch", "Nederlands"),
+    AppLanguage("th", "Thai", "ไทย"),
+    AppLanguage("vi", "Vietnamese", "Tiếng Việt"),
+    AppLanguage("ne", "Nepali", "नेपाली"),
+    AppLanguage("fa", "Persian", "فارسی", isRtl = true),
+    AppLanguage("sw", "Swahili", "Kiswahili")
+)
+
+data class AppStrings(
+    val appName: String,
+    val tagline: String,
+    val navScores: String,
+    val navSocial: String,
+    val navArena: String,
+    val navHub: String,
+    val football: String,
+    val cricket: String,
+    val live: String,
+    val upcoming: String,
+    val results: String,
+    val standings: String,
+    val rankings: String,
+    val news: String,
+    val fixtures: String,
+    val commentary: String,
+    val timeline: String,
+    val lineups: String,
+    val stats: String,
+    val scorecard: String,
+    val batting: String,
+    val bowling: String,
+    val overs: String,
+    val fallOfWickets: String,
+    val partnerships: String,
+    val aiMatchAnalysis: String,
+    val aiPlayerAnalysis: String,
+    val compareTeams: String,
+    val comparePlayers: String,
+    val shareCard: String,
+    val saveOffline: String,
+    val addReminder: String,
+    val headToHead: String,
+    val stadium: String,
+    val manager: String,
+    val squad: String,
+    val careerStats: String,
+    val form: String,
+    val achievements: String,
+    val createPost: String,
+    val feed: String,
+    val trending: String,
+    val groups: String,
+    val messages: String,
+    val friends: String,
+    val like: String,
+    val comment: String,
+    val share: String,
+    val save: String,
+    val report: String,
+    val blockUser: String,
+    val follow: String,
+    val following: String,
+    val sportsQuiz: String,
+    val leaderboard: String,
+    val bookmarks: String,
+    val transfersAndInjuries: String,
+    val archive: String,
+    val profile: String,
+    val settings: String,
+    val darkMode: String,
+    val lightMode: String,
+    val language: String,
+    val accessibility: String,
+    val highContrast: String,
+    val updateCentre: String,
+    val whatsNew: String,
+    val checkUpdates: String,
+    val feedback: String,
+    val privacySettings: String,
+    val deleteAccount: String,
+    val adminDashboard: String,
+    val signInWithGoogle: String,
+    val signOut: String,
+    val refreshLive: String,
+    val noLiveMatches: String,
+    val loadingLiveFeeds: String,
+    val apiStatusBanner: String,
+    val pollVote: String,
+    val prediction: String,
+    val verifiedFan: String,
+    val send: String,
+    val writeComment: String,
+    val createGroup: String,
+    val joinGroup: String,
+    val publicGroup: String,
+    val privateGroup: String,
+    val submit: String,
+    val cancel: String,
+    val totalUsers: String,
+    val activePosts: String,
+    val openReports: String,
+    val communityGroups: String,
+    val broadcastUpdate: String,
+    val moderationQueue: String
+)
+
+private val EnglishStrings = AppStrings(
+    appName = "MONTANU SCORE",
+    tagline = "Your World of Sports",
+    navScores = "Scores",
+    navSocial = "Social",
+    navArena = "Arena",
+    navHub = "Hub",
+    football = "FOOTBALL",
+    cricket = "CRICKET",
+    live = "LIVE",
+    upcoming = "Fixtures",
+    results = "Results",
+    standings = "Standings",
+    rankings = "ICC Rankings",
+    news = "News",
+    fixtures = "Fixtures",
+    commentary = "Commentary",
+    timeline = "Timeline",
+    lineups = "Starting XI",
+    stats = "Match Stats",
+    scorecard = "Scorecard",
+    batting = "Batting",
+    bowling = "Bowling",
+    overs = "Overs",
+    fallOfWickets = "Fall of Wickets",
+    partnerships = "Partnerships",
+    aiMatchAnalysis = "AI Match Analysis",
+    aiPlayerAnalysis = "AI Player Scouting",
+    compareTeams = "Compare Teams",
+    comparePlayers = "Compare Players",
+    shareCard = "Share Card",
+    saveOffline = "Save Offline",
+    addReminder = "Calendar Reminder",
+    headToHead = "Head-to-Head",
+    stadium = "Stadium",
+    manager = "Manager / Coach",
+    squad = "Squad & Ratings",
+    careerStats = "Career Statistics",
+    form = "Recent Form",
+    achievements = "Achievements",
+    createPost = "Create Post",
+    feed = "Feed",
+    trending = "Trending",
+    groups = "Groups",
+    messages = "Messages",
+    friends = "Friends",
+    like = "Like",
+    comment = "Comment",
+    share = "Share",
+    save = "Save",
+    report = "Report",
+    blockUser = "Block User",
+    follow = "Follow",
+    following = "Following",
+    sportsQuiz = "Daily Sports Trivia",
+    leaderboard = "Fan Leaderboard",
+    bookmarks = "Saved & Offline",
+    transfersAndInjuries = "Transfers & Injuries",
+    archive = "Match Archive",
+    profile = "Profile",
+    settings = "Settings",
+    darkMode = "Liquid Obsidian (Dark)",
+    lightMode = "Frosted Pearl (Light)",
+    language = "Language (23+)",
+    accessibility = "Accessibility",
+    highContrast = "High Contrast Mode",
+    updateCentre = "Update Centre",
+    whatsNew = "What's New",
+    checkUpdates = "Check for Updates",
+    feedback = "In-App Feedback",
+    privacySettings = "Privacy & Security",
+    deleteAccount = "Delete Account Data",
+    adminDashboard = "Admin Command Center",
+    signInWithGoogle = "Sign in with Google",
+    signOut = "Sign Out",
+    refreshLive = "Refresh Live Feeds",
+    noLiveMatches = "No matches currently in progress for this filter. Showing latest real fixtures and results.",
+    loadingLiveFeeds = "Syncing real-time sports feeds...",
+    apiStatusBanner = "Live ESPN & TheSportsDB Real-Time Feeds",
+    pollVote = "Community Poll",
+    prediction = "Match Prediction",
+    verifiedFan = "Verified",
+    send = "Send",
+    writeComment = "Write a tactical reply...",
+    createGroup = "Create Community",
+    joinGroup = "Join",
+    publicGroup = "Public",
+    privateGroup = "Private",
+    submit = "Submit",
+    cancel = "Cancel",
+    totalUsers = "Users",
+    activePosts = "Posts",
+    openReports = "Reports",
+    communityGroups = "Groups",
+    broadcastUpdate = "Publish Update / Notice",
+    moderationQueue = "Moderation & Reports"
+)
+
+private val BanglaStrings = AppStrings(
+    appName = "মন্টানু স্কোর",
+    tagline = "আপনার খেলার বিশ্ব",
+    navScores = "স্কোর",
+    navSocial = "সোশ্যাল",
+    navArena = "অ্যারেনা",
+    navHub = "হাব",
+    football = "ফুটবল",
+    cricket = "ক্রিকেট",
+    live = "লাইভ",
+    upcoming = "আসন্ন",
+    results = "ফলাফল",
+    standings = "পয়েন্ট টেবিল",
+    rankings = "আইসিসি র‍্যাঙ্কিং",
+    news = "সংবাদ",
+    fixtures = "সময়সূচি",
+    commentary = "ধারাবিবরণী",
+    timeline = "টাইমলাইন",
+    lineups = "একাদশ",
+    stats = "পরিসংখ্যান",
+    scorecard = "স্কোরকার্ড",
+    batting = "ব্যাটিং",
+    bowling = "বোলিং",
+    overs = "ওভার",
+    fallOfWickets = "উইকেট পতন",
+    partnerships = "জুটি",
+    aiMatchAnalysis = "এআই ম্যাচ বিশ্লেষণ",
+    aiPlayerAnalysis = "এআই খেলোয়াড় বিশ্লেষণ",
+    compareTeams = "দল তুলনা",
+    comparePlayers = "খেলোয়াড় তুলনা",
+    shareCard = "কার্ড শেয়ার",
+    saveOffline = "অফলাইন সংরক্ষণ",
+    addReminder = "ক্যালেন্ডার রিমাইন্ডার",
+    headToHead = "মুখোমুখি রেকর্ড",
+    stadium = "স্টেডিয়াম",
+    manager = "ম্যানেজার / কোচ",
+    squad = "স্কোয়াড ও রেটিং",
+    careerStats = "ক্যারিয়ার পরিসংখ্যান",
+    form = "সাম্প্রতিক ফর্ম",
+    achievements = "অর্জনসমূহ",
+    createPost = "পোস্ট লিখুন",
+    feed = "ফিড",
+    trending = "ট্রেন্ডিং",
+    groups = "গ্রুপ",
+    messages = "বার্তা",
+    friends = "বন্ধু",
+    like = "লাইক",
+    comment = "মন্তব্য",
+    share = "শেয়ার",
+    save = "সংরক্ষণ",
+    report = "রিপোর্ট",
+    blockUser = "ব্লক করুন",
+    follow = "ফলো",
+    following = "ফলোয়িং",
+    sportsQuiz = "দৈনিক স্পোর্টস কুইজ",
+    leaderboard = "ফ্যান লিডারবোর্ড",
+    bookmarks = "সংরক্ষিত ও অফলাইন",
+    transfersAndInjuries = "ট্রান্সফার ও ইনজুরি",
+    archive = "ম্যাচ আর্কাইভ",
+    profile = "প্রোফাইল",
+    settings = "সেটিংস",
+    darkMode = "ডার্ক মোড",
+    lightMode = "লাইট মোড",
+    language = "ভাষা (২৩+)",
+    accessibility = "অ্যাক্সেসিবিলিটি",
+    highContrast = "হাই কনট্রাস্ট মোড",
+    updateCentre = "আপডেট সেন্টার",
+    whatsNew = "নতুন কী আছে",
+    checkUpdates = "আপডেট যাচাই",
+    feedback = "মতামত পাঠান",
+    privacySettings = "গোপনীয়তা ও নিরাপত্তা",
+    deleteAccount = "অ্যাকাউন্ট ডেটা মুছুন",
+    adminDashboard = "অ্যাডমিন ড্যাশবোর্ড",
+    signInWithGoogle = "গুগল দিয়ে সাইন ইন",
+    signOut = "সাইন আউট",
+    refreshLive = "লাইভ স্কোর রিফ্রেশ",
+    noLiveMatches = "এই মুহূর্তে কোনো লাইভ ম্যাচ নেই। সর্বশেষ বাস্তব ম্যাচ ও ফলাফল দেখানো হচ্ছে।",
+    loadingLiveFeeds = "রিয়েল-টাইম স্পোর্টস ফিড লোড হচ্ছে...",
+    apiStatusBanner = "লাইভ ESPN ও TheSportsDB রিয়েল-টাইম ডেটা",
+    pollVote = "কমিউনিটি পোল",
+    prediction = "ম্যাচ প্রেডিকশন",
+    verifiedFan = "ভেরিফাইড",
+    send = "পাঠান",
+    writeComment = "মতামত লিখুন...",
+    createGroup = "গ্রুপ তৈরি",
+    joinGroup = "যোগ দিন",
+    publicGroup = "পাবলিক",
+    privateGroup = "প্রাইভেট",
+    submit = "জমা দিন",
+    cancel = "বাতিল",
+    totalUsers = "ব্যবহারকারী",
+    activePosts = "পোস্ট",
+    openReports = "রিপোর্ট",
+    communityGroups = "গ্রুপ",
+    broadcastUpdate = "আপডেট / ঘোষণা প্রকাশ",
+    moderationQueue = "মডারেশন ও রিপোর্ট"
+)
+
+fun stringsForLanguage(code: String): AppStrings {
+    return when (code) {
+        "bn" -> BanglaStrings
+        "hi" -> EnglishStrings.copy(
+            navScores = "स्कोर", navSocial = "सोशल", navArena = "अखाड़ा", navHub = "हब",
+            football = "फ़ुटबॉल", cricket = "क्रिकेट", live = "लाइव", upcoming = "आगामी",
+            results = "परिणाम", standings = "अंक तालिका", news = "समाचार", settings = "सेटिंग्स",
+            language = "भाषा (23+)", signInWithGoogle = "Google से साइन इन करें", signOut = "साइन आउट"
+        )
+        "ur" -> EnglishStrings.copy(
+            navScores = "اسکور", navSocial = "سوشل", navArena = "ایرینا", navHub = "ہب",
+            football = "فٹ بال", cricket = "کرکٹ", live = "لائیو", upcoming = "آئندہ",
+            results = "نتائج", standings = "اسٹینڈنگ", news = "خبریں", settings = "ترتیبات",
+            language = "زبان (23+)", signInWithGoogle = "Google سے سائن ان کریں", signOut = "سائن آؤٹ"
+        )
+        "ar" -> EnglishStrings.copy(
+            navScores = "النتائج", navSocial = "المجتمع", navArena = "الساحة", navHub = "المركز",
+            football = "كرة القدم", cricket = "الكريكيت", live = "مباشر", upcoming = "المباريات",
+            results = "النتائج", standings = "الترتيب", news = "الأخبار", settings = "الإعدادات",
+            language = "اللغة (23+)", signInWithGoogle = "تسجيل الدخول عبر Google", signOut = "تسجيل الخروج"
+        )
+        "fa" -> EnglishStrings.copy(
+            navScores = "نتایج", navSocial = "اجتماعی", navArena = "آرنا", navHub = "مرکز",
+            football = "فوتبال", cricket = "کریکت", live = "زنده", upcoming = "برنامه",
+            results = "نتایج", standings = "جدول", news = "اخبار", settings = "تنظیمات",
+            language = "زبان (23+)", signInWithGoogle = "ورود با Google", signOut = "خروج"
+        )
+        "es" -> EnglishStrings.copy(
+            navScores = "Marcadores", navSocial = "Social", navArena = "Arena", navHub = "Centro",
+            football = "FÚTBOL", cricket = "CRÍQUET", live = "EN VIVO", upcoming = "Próximos",
+            results = "Resultados", standings = "Clasificación", news = "Noticias", settings = "Ajustes",
+            language = "Idioma (23+)", signInWithGoogle = "Iniciar sesión con Google", signOut = "Cerrar sesión"
+        )
+        "fr" -> EnglishStrings.copy(
+            navScores = "Scores", navSocial = "Social", navArena = "Arène", navHub = "Hub",
+            football = "FOOTBALL", cricket = "CRICKET", live = "EN DIRECT", upcoming = "À venir",
+            results = "Résultats", standings = "Classement", news = "Actualités", settings = "Paramètres",
+            language = "Langue (23+)", signInWithGoogle = "Se connecter avec Google", signOut = "Déconnexion"
+        )
+        "de" -> EnglishStrings.copy(
+            navScores = "Ergebnisse", navSocial = "Sozial", navArena = "Arena", navHub = "Hub",
+            football = "FUSSBALL", cricket = "CRICKET", live = "LIVE", upcoming = "Spiele",
+            results = "Ergebnisse", standings = "Tabelle", news = "Nachrichten", settings = "Einstellungen",
+            language = "Sprache (23+)", signInWithGoogle = "Mit Google anmelden", signOut = "Abmelden"
+        )
+        "pt" -> EnglishStrings.copy(
+            navScores = "Placares", navSocial = "Social", navArena = "Arena", navHub = "Central",
+            football = "FUTEBOL", cricket = "CRÍQUETE", live = "AO VIVO", upcoming = "Jogos",
+            results = "Resultados", standings = "Tabela", news = "Notícias", settings = "Configurações",
+            language = "Idioma (23+)", signInWithGoogle = "Entrar com Google", signOut = "Sair"
+        )
+        "it" -> EnglishStrings.copy(
+            navScores = "Risultati", navSocial = "Social", navArena = "Arena", navHub = "Hub",
+            football = "CALCIO", cricket = "CRICKET", live = "IN DIRETTA", upcoming = "Partite",
+            results = "Risultati", standings = "Classifica", news = "Notizie", settings = "Impostazioni",
+            language = "Lingua (23+)", signInWithGoogle = "Accedi con Google", signOut = "Esci"
+        )
+        "tr" -> EnglishStrings.copy(
+            navScores = "Skorlar", navSocial = "Sosyal", navArena = "Arena", navHub = "Merkez",
+            football = "FUTBOL", cricket = "KRİKET", live = "CANLI", upcoming = "Fikstür",
+            results = "Sonuçlar", standings = "Puan Durumu", news = "Haberler", settings = "Ayarlar",
+            language = "Dil (23+)", signInWithGoogle = "Google ile giriş yap", signOut = "Çıkış Yap"
+        )
+        "id" -> EnglishStrings.copy(
+            navScores = "Skor", navSocial = "Sosial", navArena = "Arena", navHub = "Pusat",
+            football = "SEPAK BOLA", cricket = "KRIKET", live = "LANGSUNG", upcoming = "Jadwal",
+            results = "Hasil", standings = "Klasemen", news = "Berita", settings = "Pengaturan",
+            language = "Bahasa (23+)", signInWithGoogle = "Masuk dengan Google", signOut = "Keluar"
+        )
+        "ms" -> EnglishStrings.copy(
+            navScores = "Skor", navSocial = "Sosial", navArena = "Arena", navHub = "Hab",
+            football = "BOLA SEPAK", cricket = "KRIKET", live = "LANGSUNG", upcoming = "Jadual",
+            results = "Keputusan", standings = "Kedudukan", news = "Berita", settings = "Tetapan",
+            language = "Bahasa (23+)", signInWithGoogle = "Log masuk dengan Google", signOut = "Log keluar"
+        )
+        "ja" -> EnglishStrings.copy(
+            navScores = "スコア", navSocial = "ソーシャル", navArena = "アリーナ", navHub = "ハブ",
+            football = "サッカー", cricket = "クリケット", live = "ライブ", upcoming = "日程",
+            results = "結果", standings = "順位表", news = "ニュース", settings = "設定",
+            language = "言語 (23+)", signInWithGoogle = "Googleでログイン", signOut = "ログアウト"
+        )
+        "ko" -> EnglishStrings.copy(
+            navScores = "스코어", navSocial = "소셜", navArena = "아레나", navHub = "허브",
+            football = "축구", cricket = "크리켓", live = "실시간", upcoming = "일정",
+            results = "결과", standings = "순위", news = "뉴스", settings = "설정",
+            language = "언어 (23+)", signInWithGoogle = "Google로 로그인", signOut = "로그아웃"
+        )
+        "zh" -> EnglishStrings.copy(
+            navScores = "比分", navSocial = "社区", navArena = "竞技场", navHub = "中心",
+            football = "足球", cricket = "板球", live = "直播", upcoming = "赛程",
+            results = "赛果", standings = "积分榜", news = "新闻", settings = "设置",
+            language = "语言 (23+)", signInWithGoogle = "使用 Google 登录", signOut = "退出登录"
+        )
+        "ru" -> EnglishStrings.copy(
+            navScores = "Счёт", navSocial = "Лента", navArena = "Арена", navHub = "Центр",
+            football = "ФУТБОЛ", cricket = "КРИКЕТ", live = "ПРЯМОЙ ЭФИР", upcoming = "Матчи",
+            results = "Результаты", standings = "Таблица", news = "Новости", settings = "Настройки",
+            language = "Язык (23+)", signInWithGoogle = "Войти через Google", signOut = "Выйти"
+        )
+        "nl" -> EnglishStrings.copy(
+            navScores = "Scores", navSocial = "Sociaal", navArena = "Arena", navHub = "Hub",
+            football = "VOETBAL", cricket = "CRICKET", live = "LIVE", upcoming = "Programma",
+            results = "Uitslagen", standings = "Stand", news = "Nieuws", settings = "Instellingen",
+            language = "Taal (23+)", signInWithGoogle = "Inloggen met Google", signOut = "Uitloggen"
+        )
+        "th" -> EnglishStrings.copy(
+            navScores = "ผลบอล", navSocial = "โซเชียล", navArena = "อารีนา", navHub = "ฮับ",
+            football = "ฟุตบอล", cricket = "คริกเก็ต", live = "สด", upcoming = "โปรแกรม",
+            results = "ผลการแข่งขัน", standings = "ตารางคะแนน", news = "ข่าว", settings = "ตั้งค่า",
+            language = "ภาษา (23+)", signInWithGoogle = "เข้าสู่ระบบด้วย Google", signOut = "ออกจากระบบ"
+        )
+        "vi" -> EnglishStrings.copy(
+            navScores = "Tỷ số", navSocial = "Cộng đồng", navArena = "Đấu trường", navHub = "Trung tâm",
+            football = "BÓNG ĐÁ", cricket = "CRICKET", live = "TRỰC TIẾP", upcoming = "Lịch thi đấu",
+            results = "Kết quả", standings = "Bảng xếp hạng", news = "Tin tức", settings = "Cài đặt",
+            language = "Ngôn ngữ (23+)", signInWithGoogle = "Đăng nhập bằng Google", signOut = "Đăng xuất"
+        )
+        "ne" -> EnglishStrings.copy(
+            navScores = "स्कोर", navSocial = "सामाजिक", navArena = "एरेना", navHub = "हब",
+            football = "फुटबल", cricket = "क्रिकेट", live = "लाइभ", upcoming = "तालिका",
+            results = "नतिजा", standings = "अङ्क तालिका", news = "समाचार", settings = "सेटिङ",
+            language = "भाषा (२३+)", signInWithGoogle = "Google बाट साइन इन", signOut = "साइन आउट"
+        )
+        "sw" -> EnglishStrings.copy(
+            navScores = "Matokeo", navSocial = "Jamii", navArena = "Uwanja", navHub = "Kituo",
+            football = "SOKA", cricket = "KRIKETI", live = "MUBASHARA", upcoming = "Ratiba",
+            results = "Matokeo", standings = "Msimamo", news = "Habari", settings = "Mipangilio",
+            language = "Lugha (23+)", signInWithGoogle = "Ingia na Google", signOut = "Toka"
+        )
+        else -> EnglishStrings
+    }
+}

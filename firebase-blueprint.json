@@ -1,0 +1,371 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "Private user account settings, favourites, trivia totals, and blocked list.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "darkMode": { "type": "boolean" },
+        "languageCode": { "type": "string" },
+        "favTeamIds": { "type": "array" },
+        "favPlayerIds": { "type": "array" },
+        "blockedUserIds": { "type": "array" },
+        "triviaPoints": { "type": "integer" },
+        "triviaStreak": { "type": "integer" },
+        "achievements": { "type": "array" },
+        "highContrast": { "type": "boolean" },
+        "matchRemindersEnabled": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "userId", "email", "displayName", "darkMode", "languageCode",
+        "favTeamIds", "favPlayerIds", "blockedUserIds", "triviaPoints",
+        "triviaStreak", "achievements", "highContrast", "matchRemindersEnabled",
+        "createdAt", "updatedAt"
+      ]
+    },
+    "PublicProfile": {
+      "title": "PublicProfile",
+      "description": "Public social profile shown in feeds, groups, and fan clubs.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "handle": { "type": "string" },
+        "bio": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "coverUrl": { "type": "string" },
+        "fanBadge": { "type": "string" },
+        "verified": { "type": "boolean" },
+        "followersCount": { "type": "integer" },
+        "followingCount": { "type": "integer" },
+        "onlineStatus": { "type": "string", "enum": ["ONLINE", "AWAY", "OFFLINE"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "userId", "displayName", "handle", "fanBadge", "verified",
+        "followersCount", "followingCount", "onlineStatus", "createdAt", "updatedAt"
+      ]
+    },
+    "BookmarkItem": {
+      "title": "BookmarkItem",
+      "description": "Saved matches, offline stats, news bookmarks, and match reminders.",
+      "type": "object",
+      "properties": {
+        "bookmarkType": { "type": "string", "enum": ["MATCH", "NEWS", "PLAYER", "TEAM", "POST", "REMINDER"] },
+        "itemId": { "type": "string" },
+        "sport": { "type": "string", "enum": ["FOOTBALL", "CRICKET", "GENERAL"] },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "payloadJson": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["bookmarkType", "itemId", "sport", "title", "subtitle", "createdAt", "updatedAt"]
+    },
+    "FollowLink": {
+      "title": "FollowLink",
+      "description": "Follow relationship between current user and another fan.",
+      "type": "object",
+      "properties": {
+        "targetUid": { "type": "string" },
+        "targetName": { "type": "string" },
+        "targetAvatar": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["targetUid", "targetName", "createdAt", "updatedAt"]
+    },
+    "FriendRequest": {
+      "title": "FriendRequest",
+      "description": "Friend request document stored under recipient user.",
+      "type": "object",
+      "properties": {
+        "requesterUid": { "type": "string" },
+        "requesterName": { "type": "string" },
+        "requesterAvatar": { "type": "string" },
+        "status": { "type": "string", "enum": ["PENDING", "ACCEPTED", "DECLINED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["requesterUid", "requesterName", "status", "createdAt", "updatedAt"]
+    },
+    "UserNotification": {
+      "title": "UserNotification",
+      "description": "In-app notification entry for social, match, or update alerts.",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "category": { "type": "string", "enum": ["MATCH", "SOCIAL", "SYSTEM", "UPDATE"] },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "title", "body", "category", "read", "createdAt", "updatedAt"]
+    },
+    "SocialPost": {
+      "title": "SocialPost",
+      "description": "Sports social post, poll, or match prediction.",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorVerified": { "type": "boolean" },
+        "sportTag": { "type": "string", "enum": ["FOOTBALL", "CRICKET", "GENERAL"] },
+        "mediaType": { "type": "string", "enum": ["TEXT", "IMAGE", "VIDEO", "POLL", "PREDICTION"] },
+        "content": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "matchRefId": { "type": "string" },
+        "matchLabel": { "type": "string" },
+        "hashtags": { "type": "array" },
+        "pollOptionA": { "type": "string" },
+        "pollOptionB": { "type": "string" },
+        "votesA": { "type": "integer" },
+        "votesB": { "type": "integer" },
+        "likesCount": { "type": "integer" },
+        "commentsCount": { "type": "integer" },
+        "sharesCount": { "type": "integer" },
+        "status": { "type": "string", "enum": ["ACTIVE", "FLAGGED", "REMOVED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "authorId", "authorName", "authorVerified", "sportTag", "mediaType",
+        "content", "hashtags", "votesA", "votesB", "likesCount",
+        "commentsCount", "sharesCount", "status", "createdAt", "updatedAt"
+      ]
+    },
+    "PostComment": {
+      "title": "PostComment",
+      "description": "Comment or reply on a social post.",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "parentCommentId": { "type": "string" },
+        "content": { "type": "string" },
+        "status": { "type": "string", "enum": ["ACTIVE", "REMOVED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["authorId", "authorName", "content", "status", "createdAt", "updatedAt"]
+    },
+    "PostLike": {
+      "title": "PostLike",
+      "description": "Like marker keyed by liker UID.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "createdAt"]
+    },
+    "SportsGroup": {
+      "title": "SportsGroup",
+      "description": "Public or private sports community, team fan club, or player fan club.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "sportTag": { "type": "string", "enum": ["FOOTBALL", "CRICKET", "GENERAL"] },
+        "groupKind": { "type": "string", "enum": ["COMMUNITY", "TEAM_CLUB", "PLAYER_CLUB"] },
+        "privacy": { "type": "string", "enum": ["PUBLIC", "PRIVATE"] },
+        "ownerId": { "type": "string" },
+        "memberUids": { "type": "array" },
+        "memberCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "name", "description", "sportTag", "groupKind", "privacy",
+        "ownerId", "memberUids", "memberCount", "createdAt", "updatedAt"
+      ]
+    },
+    "GroupMessage": {
+      "title": "GroupMessage",
+      "description": "Message inside a sports group or match discussion room.",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "privacy": { "type": "string", "enum": ["PUBLIC", "PRIVATE"] },
+        "memberUids": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "senderName", "text", "privacy", "memberUids", "createdAt"]
+    },
+    "DirectChat": {
+      "title": "DirectChat",
+      "description": "1-to-1 private chat thread between two fans.",
+      "type": "object",
+      "properties": {
+        "participantUids": { "type": "array" },
+        "participantNames": { "type": "array" },
+        "lastMessage": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["participantUids", "participantNames", "lastMessage", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Private direct message inside a 1-to-1 chat thread.",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "participantUids": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "senderName", "text", "participantUids", "createdAt"]
+    },
+    "ModerationReport": {
+      "title": "ModerationReport",
+      "description": "User-submitted moderation report for posts, comments, or users.",
+      "type": "object",
+      "properties": {
+        "reporterId": { "type": "string" },
+        "targetType": { "type": "string", "enum": ["POST", "USER", "COMMENT", "GROUP"] },
+        "targetId": { "type": "string" },
+        "reason": { "type": "string" },
+        "status": { "type": "string", "enum": ["OPEN", "RESOLVED", "DISMISSED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["reporterId", "targetType", "targetId", "reason", "status", "createdAt", "updatedAt"]
+    },
+    "TriviaScore": {
+      "title": "TriviaScore",
+      "description": "Fan leaderboard entry for daily sports trivia.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "points": { "type": "integer" },
+        "correctAnswers": { "type": "integer" },
+        "streak": { "type": "integer" },
+        "badge": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "displayName", "points", "correctAnswers", "streak", "badge", "createdAt", "updatedAt"]
+    },
+    "AppConfig": {
+      "title": "AppConfig",
+      "description": "App Update Centre, release announcements, and maintenance status.",
+      "type": "object",
+      "properties": {
+        "latestVersionCode": { "type": "integer" },
+        "latestVersionName": { "type": "string" },
+        "mandatoryUpdate": { "type": "boolean" },
+        "maintenanceMode": { "type": "boolean" },
+        "whatsNewNotes": { "type": "string" },
+        "announcementTitle": { "type": "string" },
+        "announcementBody": { "type": "string" },
+        "playStoreUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "latestVersionCode", "latestVersionName", "mandatoryUpdate", "maintenanceMode",
+        "whatsNewNotes", "announcementTitle", "announcementBody", "playStoreUrl",
+        "createdAt", "updatedAt"
+      ]
+    },
+    "UserFeedback": {
+      "title": "UserFeedback",
+      "description": "In-app user feedback submitted to admins.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["OPEN", "REVIEWED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "subject", "message", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserAccount" },
+      "description": "Private user account and preferences."
+    },
+    "/public_profiles/{userId}": {
+      "schema": { "$ref": "#/entities/PublicProfile" },
+      "description": "Public fan social profile."
+    },
+    "/users/{userId}/bookmarks/{bookmarkId}": {
+      "schema": { "$ref": "#/entities/BookmarkItem" },
+      "description": "Saved bookmarks, offline stats, and reminders."
+    },
+    "/users/{userId}/following/{targetUid}": {
+      "schema": { "$ref": "#/entities/FollowLink" },
+      "description": "Users followed by this user."
+    },
+    "/users/{userId}/friend_requests/{requesterUid}": {
+      "schema": { "$ref": "#/entities/FriendRequest" },
+      "description": "Friend requests sent to this user."
+    },
+    "/users/{userId}/notifications/{notifId}": {
+      "schema": { "$ref": "#/entities/UserNotification" },
+      "description": "User notifications."
+    },
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/SocialPost" },
+      "description": "Community social feed posts, polls, and predictions."
+    },
+    "/posts/{postId}/comments/{commentId}": {
+      "schema": { "$ref": "#/entities/PostComment" },
+      "description": "Comments and replies on a post."
+    },
+    "/posts/{postId}/likes/{likerUid}": {
+      "schema": { "$ref": "#/entities/PostLike" },
+      "description": "Likes on a post."
+    },
+    "/groups/{groupId}": {
+      "schema": { "$ref": "#/entities/SportsGroup" },
+      "description": "Sports communities and fan clubs."
+    },
+    "/groups/{groupId}/messages/{msgId}": {
+      "schema": { "$ref": "#/entities/GroupMessage" },
+      "description": "Group and match room chat messages."
+    },
+    "/chats/{chatId}": {
+      "schema": { "$ref": "#/entities/DirectChat" },
+      "description": "1-to-1 private chat metadata."
+    },
+    "/chats/{chatId}/messages/{msgId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "1-to-1 private chat messages."
+    },
+    "/reports/{reportId}": {
+      "schema": { "$ref": "#/entities/ModerationReport" },
+      "description": "Moderation reports."
+    },
+    "/trivia_scores/{userId}": {
+      "schema": { "$ref": "#/entities/TriviaScore" },
+      "description": "Fan trivia leaderboard scores."
+    },
+    "/app_config/{configId}": {
+      "schema": { "$ref": "#/entities/AppConfig" },
+      "description": "App update centre and system announcements."
+    },
+    "/feedback/{feedbackId}": {
+      "schema": { "$ref": "#/entities/UserFeedback" },
+      "description": "In-app user feedback."
+    }
+  }
+}
